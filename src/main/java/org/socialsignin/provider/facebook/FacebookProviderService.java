@@ -6,11 +6,14 @@ import org.springframework.social.facebook.api.impl.FacebookTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FacebookProviderService extends AbstractProviderService<Facebook> {
+public class FacebookProviderService extends AbstractProviderService<Facebook,FacebookProviderConfig> {
 
-	@Override
-	public Class<Facebook> getApiClass() {
-		return Facebook.class;
+	public FacebookProviderService() {
+		super();
+	}
+
+	public FacebookProviderService(FacebookProviderConfig providerConfig) {
+		super(providerConfig);
 	}
 
 	@Override

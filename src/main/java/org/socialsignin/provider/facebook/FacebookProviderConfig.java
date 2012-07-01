@@ -50,6 +50,10 @@ public class FacebookProviderConfig extends AbstractProviderConfig<Facebook> {
 		super();
 	}
 	
+	public FacebookProviderConfig(String accessToken) {
+		super(new FacebookTemplate(accessToken));
+	}
+	
 	public FacebookProviderConfig(String facebookClientId,
 			Facebook authenticatedApi) {
 		super(authenticatedApi);

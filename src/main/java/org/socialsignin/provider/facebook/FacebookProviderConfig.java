@@ -34,17 +34,9 @@ import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 */
 @Configuration
 public class FacebookProviderConfig extends AbstractProviderConfig<Facebook> {
-
 	
-
 	@Autowired(required=false)
 	private FacebookConnectInterceptor facebookConnectInterceptor;
-
-	@Value("${facebook.clientId}")
-	private String facebookClientId;
-
-	@Value("${facebook.clientSecret}")
-	private String facebookClientSecret;
 	
 	public FacebookProviderConfig() {
 		super();
@@ -54,55 +46,28 @@ public class FacebookProviderConfig extends AbstractProviderConfig<Facebook> {
 		super(new FacebookTemplate(accessToken));
 	}
 	
-	public FacebookProviderConfig(String facebookClientId,
+	public FacebookProviderConfig(
 			Facebook authenticatedApi) {
 		super(authenticatedApi);
-		this.facebookClientId = facebookClientId;
-	}
-	
-	public FacebookProviderConfig(String facebookClientId,String accessToken) {
-		super(new FacebookTemplate(accessToken));
-		this.facebookClientId = facebookClientId;
-	}
-	
-	public FacebookProviderConfig(String facebookClientId,String facebookClientSecret,ConnectionRepository connectionRepository,
-			ConnectionFactoryRegistry connectionFactoryRegistry) {
-		super(connectionRepository, connectionFactoryRegistry);
-		this.facebookClientSecret = facebookClientSecret;
-		this.facebookClientSecret  = facebookClientSecret;
 	}
 
-	public FacebookProviderConfig(String facebookClientId,String facebookClientSecret,ConnectionRepository connectionRepository,
-			UsersConnectionRepository usersConnectionRepository,
-			ConnectionFactoryRegistry connectionFactoryRegistry) {
-		super(connectionRepository, usersConnectionRepository,
-				connectionFactoryRegistry);
-		this.facebookClientId = facebookClientSecret;
-		this.facebookClientSecret  = facebookClientSecret;
+	
+	public FacebookProviderConfig(ConnectionRepository connectionRepository) {
+		super(connectionRepository);
+
+	}
+
+	public FacebookProviderConfig(ConnectionRepository connectionRepository,
+			UsersConnectionRepository usersConnectionRepository) {
+		super(connectionRepository, usersConnectionRepository);
+
 	}
 	
-	public FacebookProviderConfig(String facebookClientId,String facebookClientSecret,String userId,	UsersConnectionRepository usersConnectionRepository,
-			ConnectionFactoryRegistry connectionFactoryRegistry) {
-		super(userId,usersConnectionRepository,
-				connectionFactoryRegistry);
-		this.facebookClientId = facebookClientId;
-		this.facebookClientSecret  = facebookClientSecret;
+	public FacebookProviderConfig(String userId,UsersConnectionRepository usersConnectionRepository) {
+		super(userId,usersConnectionRepository);
 	}
 
-	public void setFacebookClientId(String facebookClientId) {
-		this.facebookClientId = facebookClientId;
-	}
-
-	public void setFacebookClientSecret(String facebookClientSecret) {
-		this.facebookClientSecret = facebookClientSecret;
-	}
 	
-	@Override
-	protected ConnectionFactory<Facebook> createConnectionFactory() {
-		return new FacebookConnectionFactory(facebookClientId,
-				facebookClientSecret);
-	}
-
 	@Override
 	protected ConnectInterceptor<Facebook> getConnectInterceptor() {
 		return facebookConnectInterceptor;

@@ -24,7 +24,7 @@
 	<name>SocialSignIn Facebook Provider</name>
 	<properties>
 	   <org.socialsignin.provider.version>1.1.0-SNAPSHOT</org.socialsignin.provider.version>
-	   <org.springframework.social.facebook.version>1.1.0.M3</org.springframework.social.facebook.version>
+	   <org.springframework.social.facebook.version>1.1.0.RC1</org.springframework.social.facebook.version>
 	   <org.socialsignin.springsocial.security.version>1.1.0-SNAPSHOT</org.socialsignin.springsocial.security.version>
 	   
 	</properties>
@@ -47,6 +47,22 @@
 	        	<id>opensourceagility-releases</id>
 	        	<url>http://repo.opensourceagility.com/releases</url>
 	    	</repository>
+	    	    	 <repository>
+        <id>spring-snapshots</id>
+        <name>Spring Snapshots</name>
+        <url>http://repo.spring.io/snapshot</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+    <repository>
+        <id>spring-milestone</id>
+        <name>Spring Snapshots</name>
+        <url>http://repo.spring.io/milestone</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
 	</repositories>
 
 	<dependencies>
